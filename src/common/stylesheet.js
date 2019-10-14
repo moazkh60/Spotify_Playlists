@@ -32,7 +32,12 @@ export const styles = StyleSheet.create({
         margin: 8,
         flexDirection: 'column',
         justifyContent: "space-between"
+    },
+    boldText: {
+        fontWeight: 'bold'
+    },
+    rowView: {
+        flexDirection: 'row',
+        margin: 4
     }
-    
-    
 })

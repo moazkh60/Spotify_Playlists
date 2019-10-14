@@ -22,7 +22,6 @@ class TracksList extends Component {
     })
       .then(response => response.json())
       .then(data => {
-          console.log(data)
         this.setState({tracksList: data.tracks.items});
       })
       .catch(error => {
