@@ -22,6 +22,7 @@ class TracksList extends Component {
     })
       .then(response => response.json())
       .then(data => {
+          console.log(data)
         this.setState({tracksList: data.tracks.items});
       })
       .catch(error => {
@@ -45,8 +46,9 @@ class TracksList extends Component {
       <View style={styles.container}>
         <FlatList
           data={this.state.tracksList}
-          renderItem={({item}) => <TrackListItem item={item} />}
-          keyExtractor={item => item.id}
+          renderItem={({item}) => <TrackListItem item={item} 
+          onPress={(item)=> this.props.navigation.navigate('TrackDetail',{item})} />}
+          keyExtractor={item => item.track.id}
         />
       </View>
     );

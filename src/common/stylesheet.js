@@ -26,6 +26,13 @@ export const styles = StyleSheet.create({
         margin: 8,
         flexDirection: 'row',
         justifyContent: "space-between"
+    },
+    vertTextContainer: {
+        flex: 1,
+        margin: 8,
+        flexDirection: 'column',
+        justifyContent: "space-between"
     }
+    
     
 })
