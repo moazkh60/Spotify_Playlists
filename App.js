@@ -3,6 +3,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import PlayList from './src/components/playlist/PlayList';
 import Home from './src/Home';
 
+console.disableYellowBox = true;
 const navigator = createStackNavigator(
     {
       Home: {screen: Home} ,
@@ -11,7 +12,7 @@ const navigator = createStackNavigator(
     {
         initialRouteName: 'Home',
         defaultNavigationOptions: {
-        title: 'Select Your Country'
+        title: 'Login to Spotify'
         }
     }
 )

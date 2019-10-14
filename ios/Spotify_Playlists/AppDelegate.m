@@ -1,3 +1,4 @@
+
 /**
  * Copyright (c) Facebook, Inc. and its affiliates.
  *
@@ -29,6 +30,9 @@
   [self.window makeKeyAndVisible];
   return YES;
 }
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *, id> *) options {
+ return [self.authorizationFlowManagerDelegate resumeExternalUserAgentFlowWithURL:url];
+}
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
@@ -38,5 +42,6 @@
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
 }
+
 
 @end

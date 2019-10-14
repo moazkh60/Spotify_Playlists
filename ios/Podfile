@@ -34,6 +34,10 @@ target 'Spotify_Playlists' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  #pod 'RNAppAuth', :path => '../node_modules/react-native-app-auth'
+
+  pod 'AppAuth', '>= 0.94'
+  
   target 'Spotify_PlaylistsTests' do
     inherit! :search_paths
     # Pods for testing

@@ -1,11 +1,46 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Image, Button, Dimensions as Dm} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  Dimensions as Dm,
+  Alert,
+} from 'react-native';
 import {images} from './assets/';
-import {Dropdown} from 'react-native-material-dropdown';
-import {countries} from './common/constants';
+import {authorize} from 'react-native-app-auth';
+import {config} from './config';
 
 class Home extends Component {
-  state = {value: ''};
+  
+  /** Access token retrieved from spotify api */
+  accessToken = '';
+
+  /**
+   * Fetch Data Asynchronously and
+   * get the access token
+   */
+  fetchData = async () => {
+    try {
+      const result = await authorize(config);
+      console.log('result is ', result);
+      if (result.accessToken) {
+        this.accessToken = result.accessToken;
+      }
+    } catch (error) {
+      console.log('error is ', error);
+      Alert.alert('Error', 'Unable to connect to SpotifyAPI');
+    }
+  };
+
+  /**
+   * Show Token request as soon as the app starts
+   */
+  componentDidMount() {
+    this.fetchData()
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -15,17 +50,14 @@ class Home extends Component {
             source={images.spotify_image}
             resizeMode="contain"
           />
-          <View style={styles.dropDownContainer}>
-            <Dropdown
-              label="Select Your Country"
-              baseColor="white"
-              containerStyle={{flex: 1}}
-              data={countries}
-              value={this.state.value}
-              onChangeText={value => this.setState({value})}
-            />
-          </View>
-          <Button style={styles.buttonStyle} title="Go" color="#ffffff" />
+
+          <TouchableOpacity
+            style={styles.buttonStyle}
+            title="Go to PlayLists"
+            color="#ffffff"
+            onPress={() => this.props.navigation.navigate('PlayList', this.accessToken)}>
+            <Text style={styles.buttonTextStyle}>Go To PlayLists</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -55,9 +87,20 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: 500,
     height: 100,
+    marginBottom: 30,
     justifyContent: 'center',
   },
   buttonStyle: {
+    flex: 1,
+    margin: 10,
+    borderRadius: 6,
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: 'white',
+    width: Dm.get('window').width - 100,
   },
+  buttonTextStyle: {
+      fontSize: 18,
+      fontWeight: '400'
+  }
 });

@@ -62,6 +62,7 @@
 		AD4C77D2F305F8628586CA43 /* Pods-Spotify_Playlists.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify_Playlists.debug.xcconfig"; path = "Target Support Files/Pods-Spotify_Playlists/Pods-Spotify_Playlists.debug.xcconfig"; sourceTree = "<group>"; };
 		AFE5983F051226886B305C60 /* libPods-Spotify_PlaylistsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Spotify_PlaylistsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D05DB1EE45DD708F7ED5C605 /* Pods-Spotify_PlaylistsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify_PlaylistsTests.release.xcconfig"; path = "Target Support Files/Pods-Spotify_PlaylistsTests/Pods-Spotify_PlaylistsTests.release.xcconfig"; sourceTree = "<group>"; };
+		D52F5238235363A800D1A487 /* Spotify_Playlists.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Spotify_Playlists.entitlements; path = Spotify_Playlists/Spotify_Playlists.entitlements; sourceTree = "<group>"; };
 		DB71A3872F2765478A305BD2 /* libPods-Spotify_Playlists-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Spotify_Playlists-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAB02821D685AD9DC8EC5468 /* Pods-Spotify_PlaylistsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify_PlaylistsTests.debug.xcconfig"; path = "Target Support Files/Pods-Spotify_PlaylistsTests/Pods-Spotify_PlaylistsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -125,6 +126,7 @@
 		13B07FAE1A68108700A75B9A /* Spotify_Playlists */ = {
 			isa = PBXGroup;
 			children = (
+				D52F5238235363A800D1A487 /* Spotify_Playlists.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -194,7 +196,6 @@
 				EAB02821D685AD9DC8EC5468 /* Pods-Spotify_PlaylistsTests.debug.xcconfig */,
 				D05DB1EE45DD708F7ED5C605 /* Pods-Spotify_PlaylistsTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -292,6 +293,10 @@
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = Q4D35U6NN5;
+						ProvisioningStyle = Automatic;
+					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
@@ -308,6 +313,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -626,8 +632,12 @@
 			baseConfigurationReference = AD4C77D2F305F8628586CA43 /* Pods-Spotify_Playlists.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Spotify_Playlists/Spotify_Playlists.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = Q4D35U6NN5;
 				INFOPLIST_FILE = Spotify_Playlists/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -637,6 +647,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Spotify_Playlists;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -646,7 +657,11 @@
 			baseConfigurationReference = 09DE372C7D82A8AC761F030C /* Pods-Spotify_Playlists.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Spotify_Playlists/Spotify_Playlists.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q4D35U6NN5;
 				INFOPLIST_FILE = Spotify_Playlists/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -656,6 +671,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Spotify_Playlists;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
