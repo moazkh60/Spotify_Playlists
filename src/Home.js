@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -14,7 +14,7 @@ import {config} from './config';
 import {USER_PROFILE_URL} from './common/constants';
 
 class Home extends Component {
-    
+  
   /**
    * Fetch user country from user profile end point
    */

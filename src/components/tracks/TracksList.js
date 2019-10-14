@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {View, FlatList} from 'react-native';
+import {View, FlatList, Alert} from 'react-native';
 import {styles} from '../../common/stylesheet';
+import TrackListItem from './tracksListItem/TracksListItem';
 
 class TracksList extends Component {
   /** State to manage trackslist data */
@@ -12,19 +13,19 @@ class TracksList extends Component {
    * data to stateso that it can be rendered
    * on the screen
    */
-  fetchTracksLists = userData => {
-    fetch(TRACKS_LIST + `?${userData.country}&limit=50`, {
+  fetchTracksLists = (item, accessToken) => {
+    fetch(item.href, {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${userData.accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
       },
     })
       .then(response => response.json())
       .then(data => {
-        this.setState({playLists: data.playlists.items});
+        this.setState({tracksList: data.tracks.items});
       })
       .catch(error => {
-        console.error(error);
+        Alert.alert('Failure', 'Unable to Fetch Tracks')
       });
   };
 
@@ -35,15 +36,15 @@ class TracksList extends Component {
    */
   componentDidMount() {
     const {navigation} = this.props;
-    const {userData} = navigation.state.params;
-    this.fetchTracksLists(userData);
+    const {item, accessToken} = navigation.state.params;
+    this.fetchTracksLists(item, accessToken);
   }
 
   render() {
     return (
       <View style={styles.container}>
         <FlatList
-          data={this.state.playLists}
+          data={this.state.tracksList}
           renderItem={({item}) => <TrackListItem item={item} />}
           keyExtractor={item => item.id}
         />

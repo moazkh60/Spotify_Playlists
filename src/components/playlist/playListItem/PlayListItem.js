@@ -9,7 +9,7 @@ import { styles } from '../../../common/stylesheet';
  */
 const PlayListItem = (props) => {
     return (
-        <TouchableOpacity onPress={props.onPress} style={styles.listItemcontainer}>
+        <TouchableOpacity onPress={() => props.onPress(props.item)} style={styles.listItemcontainer}>
             <View style={styles.imageContainer}>
             <Image
                style={styles.imageContainer}

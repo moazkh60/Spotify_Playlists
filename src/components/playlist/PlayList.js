@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
-import {View, FlatList} from 'react-native';
+import {View, FlatList, Alert} from 'react-native';
 import PlayListItem from './playListItem/PlayListItem';
 import {COUNTRY_PLAYLIST} from '../../common/constants';
 import {styles} from '../../common/stylesheet';
 
 class PlayList extends Component {
   /** State to manage playlists data */
-  state = {playLists: []};
+  state = {playLists: []}
+
+  accessToken = ''
 
   /**
    * Fetch playlists by passing country from
@@ -25,7 +27,7 @@ class PlayList extends Component {
         this.setState({playLists: data.playlists.items});
       })
       .catch(error => {
-        console.error(error);
+        Alert.alert('Failure','Unable to Fetch Playlists')
       });
   };
 
@@ -37,7 +39,15 @@ class PlayList extends Component {
   componentDidMount() {
     const {navigation} = this.props;
     const {userData} = navigation.state.params;
+    this.accessToken = userData.accessToken
     this.fetchPlayLists(userData);
+  }
+
+  setPlayListItem = (item, accessToken) => {
+    return(
+    <PlayListItem item={item} 
+    onPress={(item) => this.props.navigation.navigate('TracksList', {item, accessToken})}/>
+    )
   }
 
   render() {
@@ -45,7 +55,7 @@ class PlayList extends Component {
       <View style={styles.container}>
         <FlatList
           data={this.state.playLists}
-          renderItem={({item}) => <PlayListItem item={item} onPress={() => this.props.navigation.navigate('TracksList')}/>}
+          renderItem={({item}) => this.setPlayListItem(item, this.accessToken)}
           keyExtractor={item => item.id}
         />
       </View>

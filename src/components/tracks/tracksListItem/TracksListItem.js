@@ -8,9 +8,19 @@ import { styles } from '../../../common/stylesheet';
  * @param {object} props 
  */
 const TracksListItem = (props) => {
-    return(
-        <TouchableOpacity>
-            
+    return (
+        <TouchableOpacity onPress={() => props.onPress(props.item)} style={styles.listItemcontainer}>
+            <View style={styles.imageContainer}>
+            <Image
+               style={styles.imageContainer}
+               source={{uri: props.item.track.album.images[0].url}}
+            />
+            </View>
+            <View style={styles.textContainer}>
+                <Text>Title: {props.item.track.album.name}</Text>
+            </View>
         </TouchableOpacity>
     )
 }
+
+export default TracksListItem;
