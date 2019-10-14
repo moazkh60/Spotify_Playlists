@@ -44,7 +44,6 @@ class Home extends Component {
         this.fetchUserData(result.accessToken)
       }
     } catch (error) {
-      console.log('error is ', error);
       Alert.alert('Error', 'Unable to connect to SpotifyAPI');
     }
   };
