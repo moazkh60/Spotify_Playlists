@@ -45,7 +45,7 @@ class PlayList extends Component {
       <View style={styles.container}>
         <FlatList
           data={this.state.playLists}
-          renderItem={({item}) => <PlayListItem item={item} onPress={() => this.props.navigation.navigate('')}/>}
+          renderItem={({item}) => <PlayListItem item={item} onPress={() => this.props.navigation.navigate('TracksList')}/>}
           keyExtractor={item => item.id}
         />
       </View>
