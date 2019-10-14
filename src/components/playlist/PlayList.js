@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {View, Text, FlatList} from 'react-native';
-import {styles} from './PlayListStyles';
+import {View, FlatList} from 'react-native';
 import PlayListItem from './playListItem/PlayListItem';
 import {COUNTRY_PLAYLIST} from '../../common/constants';
+import {styles} from '../../common/stylesheet';
 
 class PlayList extends Component {
   /** State to manage playlists data */

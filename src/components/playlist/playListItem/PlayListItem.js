@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, View, Text, Image } from 'react-native'; 
-import { styles } from './PlayListItemStyles';
+import { styles } from '../../../common/stylesheet';
 
 /*
  * PlayList item for flatlist. Props
@@ -9,7 +9,7 @@ import { styles } from './PlayListItemStyles';
  */
 const PlayListItem = (props) => {
     return (
-        <TouchableOpacity onPress={props.onPress} style={styles.container}>
+        <TouchableOpacity onPress={props.onPress} style={styles.listItemcontainer}>
             <View style={styles.imageContainer}>
             <Image
                style={styles.imageContainer}

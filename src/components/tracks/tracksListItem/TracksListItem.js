@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, View, Text, Image } from 'react-native'; 
-import { styles } from './PlayListItemStyles';
+import { styles } from '../../../common/stylesheet';
 
 /*
  * TrackList item for flatlist. Props
