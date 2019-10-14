@@ -20,6 +20,7 @@ const getArtistNames = (props) => {
  * @param {object} props 
  */
 const TracksListItem = (props) => {
+    if(props.item.track){
     return (
         <TouchableOpacity 
          onPress={() => props.onPress(props.item.track)}
@@ -36,7 +37,8 @@ const TracksListItem = (props) => {
                 <Text>Popularity: {props.item.track.popularity}</Text>
             </View>
         </TouchableOpacity>
-    )
+    )}
+    return <Text>Unable to Fetch Data please refresh</Text>
 }
 
 export default TracksListItem;

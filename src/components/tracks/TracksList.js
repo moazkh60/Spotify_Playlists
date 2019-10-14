@@ -41,13 +41,14 @@ class TracksList extends Component {
   }
 
   render() {
+      console.log(this.state.tracksList)
     return (
       <View style={styles.container}>
         <FlatList
           data={this.state.tracksList}
           renderItem={({item}) => <TrackListItem item={item} 
           onPress={(item)=> this.props.navigation.navigate('TrackDetail',{item})} />}
-          keyExtractor={item => item.track.id}
+          keyExtractor={item => item.track? item.track.id:item.added_at}
         />
       </View>
     );
