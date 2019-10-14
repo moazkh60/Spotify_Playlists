@@ -12,7 +12,7 @@ const navigator = createStackNavigator(
     {
         initialRouteName: 'Home',
         defaultNavigationOptions: {
-        title: 'Login to Spotify'
+        title: 'Spotify'
         }
     }
 )

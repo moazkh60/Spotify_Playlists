@@ -11,22 +11,37 @@ import {
 import {images} from './assets/';
 import {authorize} from 'react-native-app-auth';
 import {config} from './config';
+import {USER_PROFILE_URL} from './common/constants';
 
 class Home extends Component {
-  
-  /** Access token retrieved from spotify api */
-  accessToken = '';
+    
+  /**
+   * Fetch user country from user profile end point
+   */
+  fetchUserData = (accessToken) => {
+      fetch(USER_PROFILE_URL, {
+          method: "GET",
+          headers:{
+            Authorization: `Bearer ${accessToken}`
+          }
+      }).then(response => response.json())
+      .then(responseJSON => {
+        const userData = { accessToken: accessToken, country: responseJSON.country }
+        this.props.navigation.navigate('PlayList', {userData})
+      }).catch((error) => {
+        console.error(error);
+      });
+  }
 
   /**
-   * Fetch Data Asynchronously and
+   * Get Access Token Asynchronously and
    * get the access token
    */
-  fetchData = async () => {
+  getAccessToken = async () => {
     try {
       const result = await authorize(config);
-      console.log('result is ', result);
       if (result.accessToken) {
-        this.accessToken = result.accessToken;
+        this.fetchUserData(result.accessToken)
       }
     } catch (error) {
       console.log('error is ', error);
@@ -38,7 +53,7 @@ class Home extends Component {
    * Show Token request as soon as the app starts
    */
   componentDidMount() {
-    this.fetchData()
+    this.getAccessToken()
   }
 
   render() {
@@ -51,13 +66,13 @@ class Home extends Component {
             resizeMode="contain"
           />
 
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={styles.buttonStyle}
             title="Go to PlayLists"
             color="#ffffff"
-            onPress={() => this.props.navigation.navigate('PlayList', this.accessToken)}>
+            onPress={() => this.props.navigation.navigate('PlayList')}>
             <Text style={styles.buttonTextStyle}>Go To PlayLists</Text>
-          </TouchableOpacity>
+          </TouchableOpacity>  */}
         </View>
       </View>
     );

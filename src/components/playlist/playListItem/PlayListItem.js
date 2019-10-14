@@ -13,13 +13,13 @@ const PlayListItem = (props) => {
             <View style={styles.imageContainer}>
             <Image
                style={styles.imageContainer}
-               source={{uri: props.item.image}}
+               source={{uri: props.item.images[0].url}}
             />
                
             </View>
             <View style={styles.textContainer}>
-                <Text>Title: {props.item.title}</Text>
-                <Text>Tracks: {props.item.noOfTracks}</Text>
+                <Text>Title: {props.item.name}</Text>
+                <Text>Tracks: {props.item.tracks.total}</Text>
             </View>
         </TouchableOpacity>
     )
